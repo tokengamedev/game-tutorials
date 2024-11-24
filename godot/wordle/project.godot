@@ -1,0 +1,46 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Wordle"
+config/description="A simple word puzzle game "
+run/main_scene="res://game_scene.tscn"
+config/features=PackedStringArray("4.3", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*res://autoloads/Globals.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "blue",
+"res://autoloads/": "pink",
+"res://data/": "pink",
+"res://keyboard/": "orange",
+"res://player_words/": "orange"
+}
+
+[gui]
+
+theme/custom_font="res://assets/fonts/Figtree-SemiBold.ttf"
+
+[rendering]
+
+renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.113281, 0.113281, 0.113281, 1)

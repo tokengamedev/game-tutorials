@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://boexdrj7c8bxn"]
+
+[ext_resource type="Script" path="res://player_words/word_row.gd" id="1_c372e"]
+
+[node name="WordRow" type="HBoxContainer"]
+alignment = 1
+script = ExtResource("1_c372e")

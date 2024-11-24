@@ -1,0 +1,150 @@
+[gd_scene load_steps=6 format=3 uid="uid://20rwde030rla"]
+
+[ext_resource type="Script" path="res://keyboard/keyboard.gd" id="1_m20l8"]
+[ext_resource type="PackedScene" uid="uid://bev8y0qhgotcu" path="res://keyboard/key.tscn" id="1_y20l1"]
+[ext_resource type="PackedScene" uid="uid://cbqxn7fa2ixy8" path="res://keyboard/key_action.tscn" id="2_cmg5y"]
+[ext_resource type="Texture2D" uid="uid://d1vto0hj324s2" path="res://assets/images/submit.png" id="3_q7bo5"]
+[ext_resource type="Texture2D" uid="uid://dy06rpf8cppqx" path="res://assets/images/backspace.png" id="4_g2hlp"]
+
+[node name="Keyboard" type="MarginContainer"]
+anchors_preset = -1
+anchor_top = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_bottom = 24
+script = ExtResource("1_m20l8")
+
+[node name="KeyRows" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="KeyRow" type="HBoxContainer" parent="KeyRows"]
+layout_mode = 2
+alignment = 1
+
+[node name="Key" parent="KeyRows/KeyRow" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key2" parent="KeyRows/KeyRow" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key3" parent="KeyRows/KeyRow" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key4" parent="KeyRows/KeyRow" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key5" parent="KeyRows/KeyRow" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key6" parent="KeyRows/KeyRow" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key7" parent="KeyRows/KeyRow" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key8" parent="KeyRows/KeyRow" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key9" parent="KeyRows/KeyRow" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key10" parent="KeyRows/KeyRow" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="KeyRow2" type="HBoxContainer" parent="KeyRows"]
+layout_mode = 2
+alignment = 1
+
+[node name="Key" parent="KeyRows/KeyRow2" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key2" parent="KeyRows/KeyRow2" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key3" parent="KeyRows/KeyRow2" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key4" parent="KeyRows/KeyRow2" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key5" parent="KeyRows/KeyRow2" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key6" parent="KeyRows/KeyRow2" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key7" parent="KeyRows/KeyRow2" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key8" parent="KeyRows/KeyRow2" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key9" parent="KeyRows/KeyRow2" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="KeyRow3" type="HBoxContainer" parent="KeyRows"]
+layout_mode = 2
+alignment = 1
+
+[node name="Submit" parent="KeyRows/KeyRow3" instance=ExtResource("2_cmg5y")]
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="KeyRows/KeyRow3/Submit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_q7bo5")
+
+[node name="Key" parent="KeyRows/KeyRow3" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key2" parent="KeyRows/KeyRow3" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key3" parent="KeyRows/KeyRow3" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key4" parent="KeyRows/KeyRow3" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key5" parent="KeyRows/KeyRow3" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key6" parent="KeyRows/KeyRow3" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Key7" parent="KeyRows/KeyRow3" instance=ExtResource("1_y20l1")]
+layout_mode = 2
+
+[node name="Clear" parent="KeyRows/KeyRow3" instance=ExtResource("2_cmg5y")]
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="KeyRows/KeyRow3/Clear"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_g2hlp")
+
+[connection signal="pressed" from="KeyRows/KeyRow3/Submit" to="." method="_on_submit_pressed"]
+[connection signal="pressed" from="KeyRows/KeyRow3/Clear" to="." method="_on_clear_pressed"]

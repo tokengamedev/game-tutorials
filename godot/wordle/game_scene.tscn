@@ -1,0 +1,143 @@
+[gd_scene load_steps=9 format=3 uid="uid://cop67n0ulqlcx"]
+
+[ext_resource type="Script" path="res://game_scene.gd" id="1_8wv8k"]
+[ext_resource type="PackedScene" uid="uid://20rwde030rla" path="res://keyboard/keyboard.tscn" id="1_nfc3h"]
+[ext_resource type="PackedScene" uid="uid://xthmnarfw5on" path="res://player_words/player_words.tscn" id="2_02f5n"]
+[ext_resource type="Script" path="res://game_manager.gd" id="2_wu7is"]
+
+[sub_resource type="FontVariation" id="FontVariation_jcu3d"]
+spacing_glyph = 1
+spacing_space = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_sk3h5"]
+font = SubResource("FontVariation_jcu3d")
+font_size = 18
+font_color = Color(0.337255, 0.337255, 0.337255, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mn58w"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_f1cr3"]
+font_size = 22
+
+[node name="GameScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8wv8k")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="Message" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.0486111
+anchor_right = 1.0
+anchor_bottom = 0.0486111
+offset_bottom = 20.0
+grow_horizontal = 2
+text = "INVALID TEXT"
+label_settings = SubResource("LabelSettings_sk3h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerWords" parent="." instance=ExtResource("2_02f5n")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4
+anchor_bottom = 0.4
+
+[node name="Keyboard" parent="." instance=ExtResource("1_nfc3h")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+offset_top = -152.0
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("2_wu7is")
+use_standard_keyboard = true
+
+[node name="GameOverDialog" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.3
+anchor_right = 0.7
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="GameOverDialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.306, 0.306, 0.306, 0.98)
+
+[node name="Container" type="VBoxContainer" parent="GameOverDialog"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="TextContainer" type="VBoxContainer" parent="GameOverDialog/Container"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Title" type="Label" parent="GameOverDialog/Container/TextContainer"]
+layout_mode = 2
+text = "Game Over !"
+label_settings = SubResource("LabelSettings_mn58w")
+horizontal_alignment = 1
+
+[node name="Message" type="Label" parent="GameOverDialog/Container/TextContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Message"
+label_settings = SubResource("LabelSettings_f1cr3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="GameOverDialog/Container"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="NewWord" type="Button" parent="GameOverDialog/Container/ButtonContainer"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.788235, 0.788235, 0.788235, 1)
+theme_override_font_sizes/font_size = 18
+text = "NEW WORD"
+
+[node name="TryAgain" type="Button" parent="GameOverDialog/Container/ButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.788235, 0.788235, 0.788235, 1)
+theme_override_font_sizes/font_size = 18
+text = "TRY AGAIN"
+
+[connection signal="pressed" from="GameOverDialog/Container/ButtonContainer/NewWord" to="." method="_on_new_word_pressed"]
+[connection signal="pressed" from="GameOverDialog/Container/ButtonContainer/TryAgain" to="." method="_on_try_again_pressed"]

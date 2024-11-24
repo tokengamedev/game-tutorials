@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1c2ihsyuaweq"]
+
+[ext_resource type="Texture2D" uid="uid://br8cmjku74xig" path="res://assets/images/empty_tile.png" id="1_bdcye"]
+[ext_resource type="Script" path="res://player_words/word_tile.gd" id="2_5hfu8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fd0pe"]
+font_size = 24
+
+[node name="WordTile" type="TextureRect"]
+texture = ExtResource("1_bdcye")
+script = ExtResource("2_5hfu8")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "G"
+label_settings = SubResource("LabelSettings_fd0pe")
+horizontal_alignment = 1
+vertical_alignment = 1
